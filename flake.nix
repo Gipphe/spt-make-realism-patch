@@ -11,8 +11,21 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
       {
-        devShells.default = pkgs.mkShellNoCC {
-          packages = with pkgs; [ nixfmt-rfc-style ];
+        packages.default = pkgs.haskellPackages.developPackage {
+          name = "make-realism-patch";
+          root = ./.;
+          returnShellEnv = true;
+          modifier =
+            drv:
+            pkgs.haskell.lib.addBuildTools drv (
+              (with pkgs.haskellPackages; [
+                cabal-install
+                ghcid
+                fourmolu
+                cabal-fmt
+              ])
+              ++ [ pkgs.nixfmt-rfc-style ]
+            );
         };
       }
     );
