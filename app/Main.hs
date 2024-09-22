@@ -1,8 +1,7 @@
-module Main where
+module Main (main) where
 
-import Prelude
+import Prelude.Linear
 
 
 main :: IO ()
-main = do
-  putStrLn "Hello world"
+main = putStrLn "Hello, Haskell!"
