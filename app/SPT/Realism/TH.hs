@@ -7,13 +7,14 @@ import Data.Aeson.TH
     , omitNothingFields
     )
 import Data.Char (toUpper)
-import Prelude.Linear
+import Relude
 
 
 derivingOpts :: Options
 derivingOpts =
     defaultOptions
         { fieldLabelModifier = \case
+            x : xs | x == '_' -> xs
             x : xs -> toUpper x : xs
             xs -> xs
         , omitNothingFields = True

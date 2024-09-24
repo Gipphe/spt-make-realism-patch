@@ -38,7 +38,7 @@ default-extensions:
 
 dependencies:
   - base
-  - linear-base >= 0.4.0 && < 0.5
+  - relude
   - aeson >= 2.2.3.0 && < 3
   - text >= 2.1.1 && < 3
 
