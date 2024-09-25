@@ -23,6 +23,7 @@ ghc-options:
   - -Wno-missing-safe-haskell-mode
   - -Wno-missing-kind-signatures
   - -Wno-unsafe
+  - -Wno-monomorphism-restriction
 
 default-extensions:
   - DerivingVia
