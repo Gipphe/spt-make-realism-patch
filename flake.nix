@@ -13,23 +13,23 @@
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        createTemplates = pkgs.writeShellApplication {
-          name = "create-templates";
+        extract-realism-templates = pkgs.writeShellApplication {
+          name = "extract-realism-templates";
           runtimeInputs = with pkgs; [
             fd
             fish
             jq
             ripgrep
           ];
-          text = "fish --no-config ${./scripts/make-templates.fish} \"$@\"; exit $?";
+          text = "fish --no-config ${./scripts/extract-realism-templates.fish} \"$@\"; exit $?";
         };
-        makeSnippets = pkgs.writeShellApplication {
-          name = "make-snippets";
+        make-realism-templates = pkgs.writeShellApplication {
+          name = "make-realism-templates";
           runtimeInputs = with pkgs; [
             gnused
             gawk
           ];
-          text = "fish --no-config ${./scripts/make-hs-snippets.fish} \"$@\"; exit $?";
+          text = "fish --no-config ${./scripts/make-realism-templates.fish} \"$@\"; exit $?";
         };
         package = {
           name = "make-realism-patch";
@@ -40,14 +40,16 @@
               (with pkgs.haskellPackages; [
                 cabal-fmt
                 cabal-install
-                createTemplates
                 fourmolu
                 ghcid
                 hlint
                 hpack
-                makeSnippets
               ])
-              ++ [ pkgs.nixfmt-rfc-style ]
+              ++ [
+                pkgs.nixfmt-rfc-style
+                make-realism-templates
+                extract-realism-templates
+              ]
             );
         };
       in
