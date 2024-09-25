@@ -48,6 +48,26 @@
           ];
           text = "fish --no-config \"${./scripts/make-base-template.fish}\" \"$@\"; exit $?";
         };
+        build-templates = pkgs.writeShellApplication rec {
+          name = "build-templates";
+          runtimeInputs = [
+            extract-base-template
+            extract-realism-templates
+            make-base-template
+            make-realism-templates
+          ];
+          text = ''
+            if test "$#" != 1; then
+              echo "Usage: ${name} <path to mod directory>" >&2
+              exit 1
+            fi
+            modDir=$1
+            extract-realism-templates "$modDir"
+            extract-base-template "$modDir"
+            make-realism-templates
+            make-base-template
+          '';
+        };
         package = {
           name = "make-realism-patch";
           root = ./.;
@@ -67,6 +87,7 @@
                 extract-realism-templates
                 make-base-template
                 make-realism-templates
+                build-templates
                 pkgs.nixfmt-rfc-style
               ]
             );

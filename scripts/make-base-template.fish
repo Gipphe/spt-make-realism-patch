@@ -1,3 +1,5 @@
+echo "Making type definitions for base template" >&2
+
 set -l pruned (
     cat templates/base.json \
     | jq '
@@ -72,7 +74,7 @@ echo "$props" \
     | set-types \
     | pipeline props \
     | make-module Props \
-    | tee app/SPT/Props.hs
+    | tee app/SPT/Props.hs >/dev/null
 
 echo ""
 
@@ -81,4 +83,4 @@ echo "$base" \
     | jq '._props = "Maybe Props"' \
     | pipeline template \
     | make-module Template "import SPT.Props (Props)" \
-    | tee app/SPT/Template.hs
+    | tee app/SPT/Template.hs >/dev/null

@@ -1,3 +1,5 @@
+echo "Making type definitions for realism templates" >&2
+
 set -l knownVariants gun mod ammo gear
 set -l inDir templates
 set -l outDir app/SPT/Realism

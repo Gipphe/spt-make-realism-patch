@@ -7,6 +7,8 @@ if test -z "$modsDir"
     exit 1
 end
 
+echo "Extracting properties for base template" >&2
+
 set -l filter '(. != null) and (type == "object") and has("_id") and has ("_name") and has ("_props")'
 set -l outDir templates
 mkdir -p "$outDir"

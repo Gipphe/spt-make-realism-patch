@@ -7,6 +7,8 @@ if test -z "$modsDir"
     exit 1
 end
 
+echo "Extracting properties for realism templates" >&2
+
 set -l variants gun mod gear ammo empty
 set -l realismSubDirs weapons attatchments gear ammo ""
 set -l commonFilter '(. != null) and (type == "object") and has("TemplateType")'
