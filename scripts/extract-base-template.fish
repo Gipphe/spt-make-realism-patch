@@ -27,7 +27,7 @@ for file in $allFiles
     set -a objectSets (jq "map_values(select($filter))" $file)
 end
 
-set -l objects (echo $objectSets | jq -s 'add')
+set -l objects (echo $objectSets | jq -s 'reduce .[] as $item ({}; . * $item)')
 info "Total number of objects found: $(echo $objects | jq 'length')"
 
 echo $objects | jq add >"$outDir/base.json"
