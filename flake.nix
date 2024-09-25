@@ -39,6 +39,15 @@
           ];
           text = "fish --no-config \"${./scripts/extract-base-template.fish}\" \"$@\"; exit $?";
         };
+        make-base-template = pkgs.writeShellApplication {
+          name = "make-base-template";
+          runtimeInputs = with pkgs; [
+            jq
+            gnused
+            gawk
+          ];
+          text = "fish --no-config \"${./scripts/make-base-template.fish}\" \"$@\"; exit $?";
+        };
         package = {
           name = "make-realism-patch";
           root = ./.;
@@ -54,10 +63,11 @@
                 hpack
               ])
               ++ [
-                pkgs.nixfmt-rfc-style
-                make-realism-templates
-                extract-realism-templates
                 extract-base-template
+                extract-realism-templates
+                make-base-template
+                make-realism-templates
+                pkgs.nixfmt-rfc-style
               ]
             );
         };
