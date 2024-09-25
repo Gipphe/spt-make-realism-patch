@@ -21,7 +21,7 @@
             jq
             ripgrep
           ];
-          text = "fish --no-config ${./scripts/extract-realism-templates.fish} \"$@\"; exit $?";
+          text = "fish --no-config \"${./scripts/extract-realism-templates.fish}\" \"$@\"; exit $?";
         };
         make-realism-templates = pkgs.writeShellApplication {
           name = "make-realism-templates";
@@ -29,7 +29,15 @@
             gnused
             gawk
           ];
-          text = "fish --no-config ${./scripts/make-realism-templates.fish} \"$@\"; exit $?";
+          text = "fish --no-config \"${./scripts/make-realism-templates.fish}\" \"$@\"; exit $?";
+        };
+        extract-base-template = pkgs.writeShellApplication {
+          name = "extract-base-template";
+          runtimeInputs = with pkgs; [
+            fd
+            jq
+          ];
+          text = "fish --no-config \"${./scripts/extract-base-template.fish}\" \"$@\"; exit $?";
         };
         package = {
           name = "make-realism-patch";
@@ -49,6 +57,7 @@
                 pkgs.nixfmt-rfc-style
                 make-realism-templates
                 extract-realism-templates
+                extract-base-template
               ]
             );
         };

@@ -3,7 +3,7 @@ function info
     echo $argv >&2
 end
 if test -z "$modsDir"
-    info "Usage: create-templates <mod-dir>"
+    info "Usage: extract-realism-templates <mod-dir>"
     exit 1
 end
 
