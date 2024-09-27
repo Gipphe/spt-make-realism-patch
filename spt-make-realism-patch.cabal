@@ -27,7 +27,6 @@ source-repository head
 executable spt-make-realism-patch
   main-is: Main.hs
   other-modules:
-      SPT.OverridingTemplate
       SPT.Props
       SPT.Realism.AmmoTemplate
       SPT.Realism.Conversion
