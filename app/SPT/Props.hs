@@ -20,6 +20,7 @@ data Props = MkProps
     , propsDescription :: Maybe Text
     , propsWeight :: Maybe Double
     , propsStackMaxSize :: Maybe Double
+    , propsRarityPvE :: Maybe Text
     , propsStackObjectsCount :: Maybe Double
     , propsNotShownInSlot :: Maybe Bool
     , propsExaminedByDefault :: Maybe Bool
@@ -51,26 +52,147 @@ data Props = MkProps
     , propsIsAlwaysAvailableForInsurance :: Maybe Bool
     , propsDiscardLimit :: Maybe Double
     , propsDropSoundType :: Maybe Text
+    , propsInsuranceDisabled :: Maybe Bool
+    , propsQuestStashMaxCount :: Maybe Double
+    , propsIsSpecialSlotOnly :: Maybe Bool
+    , propsIsUnremovable :: Maybe Bool
     , propsCanPutIntoDuringTheRaid :: Maybe Bool
+    , propsweapClass :: Maybe Text
+    , propsweapUseType :: Maybe Text
+    , propsammoCaliber :: Maybe Text
     , propsDurability :: Maybe Double
+    , propsMaxDurability :: Maybe Double
+    , propsOperatingResource :: Maybe Double
+    , propsRepairComplexity :: Maybe Double
+    , propsdurabSpawnMin :: Maybe Double
+    , propsdurabSpawnMax :: Maybe Double
+    , propsisFastReload :: Maybe Bool
+    , propsweapFireType :: Maybe [Text]
+    , propsSingleFireRate :: Maybe Double
+    , propsCanQueueSecondShot :: Maybe Bool
+    , propsbFirerate :: Maybe Double
+    , propsErgonomics :: Maybe Double
+    , propsVelocity :: Maybe Double
+    , propsbEffDist :: Maybe Double
+    , propsbHearDist :: Maybe Double
+    , propsisChamberLoad :: Maybe Bool
+    , propschamberAmmoCount :: Maybe Double
+    , propsisBoltCatch :: Maybe Bool
+    , propsdefMagType :: Maybe Text
+    , propsdefAmmo :: Maybe Text
+    , propsAdjustCollimatorsToTrajectory :: Maybe Bool
+    , propsChambers :: Maybe [Text]
+    , propsReloadMode :: Maybe Text
+    , propsCenterOfImpact :: Maybe Double
+    , propsAimPlane :: Maybe Double
+    , propsDeviationCurve :: Maybe Double
+    , propsDeviationMax :: Maybe Double
+    , propsFoldable :: Maybe Bool
+    , propsRetractable :: Maybe Bool
+    , propsTacticalReloadStiffnes :: Maybe Bool
+    , propsTacticalReloadFixation :: Maybe Double
+    , propsRecoilCategoryMultiplierHandRotation :: Maybe Double
+    , propsRecoilReturnSpeedHandRotation :: Maybe Double
+    , propsRecoilDampingHandRotation :: Maybe Double
+    , propsRecoilCamera :: Maybe Double
+    , propsRecoilStableIndexShot :: Maybe Double
+    , propsRecoilForceBack :: Maybe Double
+    , propsRecoilForceUp :: Maybe Double
+    , propsRecolDispersion :: Maybe Double
+    , propsRecoilPosZMult :: Maybe Double
+    , propsRecoilReturnPathDampingHandRotation :: Maybe Double
+    , propsRecoilReturnPathOffsetHandRotation :: Maybe Double
+    , propsRecoilAngle :: Maybe Double
+    , propsRecoilStableAngleIncreaseStep :: Maybe Double
+    , propsProgressRecoilAngleOnStable :: Maybe Bool
+    , propsRecoilCenter :: Maybe Bool
+    , propsPostRecoilVerticalRangeHandRotation :: Maybe Bool
+    , propsPostRecoilHorizontalRangeHandRotation :: Maybe Bool
+    , propsShotsGroupSettings :: Maybe [Text]
+    , propsCameraToWeaponAngleSpeedRange :: Maybe Bool
+    , propsCameraToWeaponAngleStep :: Maybe Double
+    , propsCameraSnap :: Maybe Double
+    , propsRotationCenter :: Maybe Bool
+    , propsRotationCenterNoStock :: Maybe Bool
+    , propsSizeReduceRight :: Maybe Double
+    , propsFoldedSlot :: Maybe Text
+    , propsCompactHandling :: Maybe Bool
+    , propsSightingRange :: Maybe Double
+    , propsMinRepairDegradation :: Maybe Double
+    , propsMaxRepairDegradation :: Maybe Double
+    , propsIronSightRange :: Maybe Double
+    , propsMustBoltBeOpennedForExternalReload :: Maybe Bool
+    , propsMustBoltBeOpennedForInternalReload :: Maybe Bool
+    , propsBoltAction :: Maybe Bool
+    , propsHipAccuracyRestorationDelay :: Maybe Double
+    , propsHipAccuracyRestorationSpeed :: Maybe Double
+    , propsHipInnaccuracyGain :: Maybe Double
+    , propsManualBoltCatch :: Maybe Bool
+    , propsAimSensitivity :: Maybe [Text]
+    , propsBurstShotsCount :: Maybe Double
+    , propsBaseMalfunctionChance :: Maybe Double
+    , propsAllowJam :: Maybe Bool
+    , propsAllowFeed :: Maybe Bool
+    , propsAllowMisfire :: Maybe Bool
+    , propsAllowSlide :: Maybe Bool
+    , propsDurabilityBurnRatio :: Maybe Double
+    , propsHeatFactorGun :: Maybe Double
+    , propsCoolFactorGun :: Maybe Double
+    , propsCoolFactorGunMods :: Maybe Double
+    , propsHeatFactorByShot :: Maybe Double
+    , propsAllowOverheat :: Maybe Bool
+    , propsMinRepairKitDegradation :: Maybe Double
+    , propsMaxRepairKitDegradation :: Maybe Double
+    , propsIsFlareGun :: Maybe Bool
+    , propsIsOneoff :: Maybe Bool
+    , propsIsGrenadeLauncher :: Maybe Bool
+    , propsNoFiremodeOnBoltcatch :: Maybe Bool
+    , propsIsStationaryWeapon :: Maybe Bool
+    , propsIsBeltMachineGun :: Maybe Bool
+    , propsWithAnimatorAiming :: Maybe Bool
+    , propsblockLeftStance :: Maybe Bool
     , propsAccuracy :: Maybe Double
     , propsRecoil :: Maybe Double
     , propsLoudness :: Maybe Double
     , propsEffectiveDistance :: Maybe Double
-    , propsErgonomics :: Maybe Double
-    , propsVelocity :: Maybe Double
     , propsRaidModdable :: Maybe Bool
     , propsToolModdable :: Maybe Bool
     , propsBlocksFolding :: Maybe Bool
     , propsBlocksCollapsible :: Maybe Bool
     , propsIsAnimated :: Maybe Bool
-    , propsHasShoulderContact :: Maybe Bool
-    , propsSightingRange :: Maybe Double
     , propsDoubleActionAccuracyPenaltyMult :: Maybe Double
-    , propsmuzzleModType :: Maybe Text
-    , propsDurabilityBurnModificator :: Maybe Double
+    , propsUniqueAnimationModID :: Maybe Double
+    , propsmagAnimationIndex :: Maybe Double
+    , propsCartridges :: Maybe [Text]
+    , propsCanFast :: Maybe Bool
+    , propsCanHit :: Maybe Bool
+    , propsCanAdmin :: Maybe Bool
+    , propsLoadUnloadModifier :: Maybe Double
+    , propsCheckTimeModifier :: Maybe Double
+    , propsCheckOverride :: Maybe Double
+    , propsReloadMagType :: Maybe Text
+    , propsVisibleAmmoRangesString :: Maybe Text
+    , propsMalfunctionChance :: Maybe Double
+    , propsTagColor :: Maybe Double
+    , propsTagName :: Maybe Text
+    , propsMagazineWithBelt :: Maybe Bool
+    , propsBeltMagazineRefreshCount :: Maybe Double
+    , propsIsMagazineForStationaryWeapon :: Maybe Bool
     , propsHeatFactor :: Maybe Double
     , propsCoolFactor :: Maybe Double
+    , propsDurabilityBurnModificator :: Maybe Double
+    , propsShotgunDispersion :: Maybe Double
+    , propsExtraSideDown :: Maybe Double
+    , propsCustomAimPlane :: Maybe Text
+    , propssightModType :: Maybe Text
+    , propsScopesCount :: Maybe Double
+    , propsModesCount :: Maybe [Double]
+    , propsZooms :: Maybe [Text]
+    , propsCalibrationDistances :: Maybe [Text]
+    , propsHasShoulderContact :: Maybe Bool
+    , propsIsShoulderContact :: Maybe Bool
+    , propsIsSilencer :: Maybe Bool
+    , propsmuzzleModType :: Maybe Text
     }
     deriving stock (Show)
 

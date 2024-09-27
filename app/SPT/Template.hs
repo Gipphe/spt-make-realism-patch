@@ -19,9 +19,8 @@ data Template = MkTemplate
     { template_id :: Maybe Text
     , template_name :: Maybe Text
     , template_parent :: Maybe Text
-    , template_proto :: Maybe Text
     , template_type :: Maybe Text
-    , template_tpl :: Maybe Text
+    , template_proto :: Maybe Text
     , template_props :: Maybe Props
     }
     deriving stock (Show)
