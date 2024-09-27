@@ -53,6 +53,7 @@ data ModTemplate = MkModTemplate
     , verticalRecoil :: Maybe Double
     , weight :: Maybe Double
     }
+    deriving stock (Show)
 
 
 $(deriveToJSON derivingOpts ''ModTemplate)

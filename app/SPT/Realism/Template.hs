@@ -4,6 +4,7 @@ module SPT.Realism.Template
 where
 
 import Data.Aeson (ToJSON (..))
+import Relude
 import SPT.Realism.AmmoTemplate (AmmoTemplate)
 import SPT.Realism.GearTemplate (GearTemplate)
 import SPT.Realism.GunTemplate (GunTemplate)
@@ -15,6 +16,7 @@ data Template
     | ModTemplate ModTemplate
     | GearTemplate GearTemplate
     | GunTemplate GunTemplate
+    deriving stock (Show)
 
 
 instance ToJSON Template where

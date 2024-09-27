@@ -29,6 +29,18 @@ function set-types
                 "Maybe Text"
             elif type == "number" then
                 "Maybe Double"
+            elif type == "array" then
+                .[0] | (
+                    if type == "string" then            
+                        "Maybe [Text]"
+                    elif type == "number" then
+                        "Maybe [Double]"
+                    elif type == "bool" then
+                        "Maybe [Bool]"
+                    else
+                        "Maybe [Text]"
+                    end
+                )
             else
                 "Maybe Bool"
             end
@@ -46,7 +58,7 @@ function pipeline
         | sed 's/^/'$argv[1]'/' \
         | sed 's/^/, /' \
         | awk 'NR==1{$0="{"substr($0,2)}1' \
-        | awk '{print} END {print "}\n"}'
+        | awk '{print} END {print "} deriving stock (Show)\n"}'
 end
 
 function make-module

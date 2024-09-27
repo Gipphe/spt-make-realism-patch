@@ -25,7 +25,7 @@ for variant in $knownVariants
         | awk '{print ($0 ~ /^[a-z]/ ? "_" $0 : tolower(substr($0,1,1)) substr($0,2))}' \
         | awk '{print ", "$0}' \
         | awk 'NR==1{$0="{"substr($0,2)}1' \
-        | awk '{print} END {print "}\n"}' \
+        | awk '{print} END {print "} deriving stock (Show)\n"}' \
         | sed '/^\\s*$/d' \
         | awk '!seen[substr($0, 1, index($0, " :: ")-1)]++' \
         | awk -v name=$prettyVariant 'BEGIN {print "data " name "Template = Mk" name "Template"} {print "    " $0}' \

@@ -65,6 +65,7 @@ data GunTemplate = MkGunTemplate
     , weight :: Maybe Double
     , width :: Maybe Double
     }
+    deriving stock (Show)
 
 
 $(deriveToJSON derivingOpts ''GunTemplate)

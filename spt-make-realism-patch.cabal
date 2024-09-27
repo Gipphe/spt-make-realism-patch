@@ -52,8 +52,9 @@ executable spt-make-realism-patch
       StrictData
   ghc-options: -Weverything -Wno-missing-import-lists -Wno-missing-safe-haskell-mode -Wno-missing-kind-signatures -Wno-unsafe -Wno-monomorphism-restriction -threaded
   build-depends:
-      aeson >=2.2.3.0 && <3
+      aeson
     , base
+    , optparse-applicative
     , relude
-    , text >=2.1.1 && <3
+    , text
   default-language: GHC2021

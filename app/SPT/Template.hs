@@ -24,6 +24,7 @@ data Template = MkTemplate
     , template_tpl :: Maybe Text
     , template_props :: Maybe Props
     }
+    deriving stock (Show)
 
 
 $(deriveFromJSON defaultOptions {fieldLabelModifier = drop 8} ''Template)

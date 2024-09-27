@@ -20,6 +20,7 @@ data AmmoTemplate = MkAmmoTemplate
     , penetrationPower :: Maybe Double
     , templateType :: Maybe Text
     }
+    deriving stock (Show)
 
 
 $(deriveToJSON derivingOpts ''AmmoTemplate)

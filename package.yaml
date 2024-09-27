@@ -40,8 +40,9 @@ default-extensions:
 dependencies:
   - base
   - relude
-  - aeson >= 2.2.3.0 && < 3
-  - text >= 2.1.1 && < 3
+  - aeson
+  - text
+  - optparse-applicative
 
 executable:
   main: Main.hs

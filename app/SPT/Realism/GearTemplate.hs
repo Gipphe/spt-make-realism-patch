@@ -35,6 +35,7 @@ data GearTemplate = MkGearTemplate
     , templateType :: Maybe Text
     , _weaponErgonomicPenalty :: Maybe Double
     }
+    deriving stock (Show)
 
 
 $(deriveToJSON derivingOpts ''GearTemplate)

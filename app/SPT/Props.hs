@@ -43,7 +43,7 @@ data Props = MkProps
     , propsMergesWithChildren :: Maybe Bool
     , propsCanSellOnRagfair :: Maybe Bool
     , propsCanRequireOnRagfair :: Maybe Bool
-    , propsConflictingItems :: Maybe Bool
+    , propsConflictingItems :: Maybe [Text]
     , propsUnlootable :: Maybe Bool
     , propsAnimationVariantsNumber :: Maybe Double
     , propsDiscardingBlock :: Maybe Bool
@@ -72,6 +72,7 @@ data Props = MkProps
     , propsHeatFactor :: Maybe Double
     , propsCoolFactor :: Maybe Double
     }
+    deriving stock (Show)
 
 
 $(deriveFromJSON defaultOptions {fieldLabelModifier = drop 5} ''Props)
