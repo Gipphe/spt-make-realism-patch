@@ -5,6 +5,7 @@
   };
   outputs =
     {
+      self,
       nixpkgs,
       flake-utils,
       ...
@@ -13,6 +14,7 @@
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+        inherit (pkgs) lib;
         extract-realism-templates = pkgs.writeShellApplication {
           name = "extract-realism-templates";
           runtimeInputs = with pkgs; [
@@ -94,6 +96,10 @@
         };
       in
       {
+        apps.default = {
+          type = "app";
+          program = "${lib.getExe self.packages.${system}.default}";
+        };
         packages.default = pkgs.haskellPackages.developPackage package;
         devShells.default = pkgs.haskellPackages.developPackage (package // { returnShellEnv = true; });
       }
