@@ -11,6 +11,7 @@ import Data.Aeson.TH
     , deriveFromJSON
     , fieldLabelModifier
     )
+import Optics.TH (makeFieldLabels)
 import Relude
 import SPT.Props (Props)
 
@@ -27,3 +28,4 @@ data Template = MkTemplate
 
 
 $(deriveFromJSON defaultOptions {fieldLabelModifier = drop 8} ''Template)
+$(makeFieldLabels ''Template)

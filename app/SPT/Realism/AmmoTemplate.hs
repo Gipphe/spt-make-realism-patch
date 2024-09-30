@@ -7,6 +7,7 @@ module SPT.Realism.AmmoTemplate
 where
 
 import Data.Aeson.TH (deriveToJSON)
+import Optics.TH (makeFieldLabels)
 import Relude
 import SPT.Realism.TH (derivingOpts)
 
@@ -24,3 +25,6 @@ data AmmoTemplate = MkAmmoTemplate
 
 
 $(deriveToJSON derivingOpts ''AmmoTemplate)
+
+
+$(makeFieldLabels ''Ammo)

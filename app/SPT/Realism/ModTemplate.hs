@@ -7,6 +7,7 @@ module SPT.Realism.ModTemplate
 where
 
 import Data.Aeson.TH (deriveToJSON)
+import Optics.TH (makeFieldLabels)
 import Relude
 import SPT.Realism.TH (derivingOpts)
 
@@ -57,3 +58,6 @@ data ModTemplate = MkModTemplate
 
 
 $(deriveToJSON derivingOpts ''ModTemplate)
+
+
+$(makeFieldLabels ''Mod)

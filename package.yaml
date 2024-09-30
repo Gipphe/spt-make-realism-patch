@@ -34,6 +34,9 @@ default-extensions:
   - LinearTypes
   - NamedFieldPuns
   - NoImplicitPrelude
+  - MagicHash
+  - OverloadedLabels
+  - NoFieldSelectors
   - OverloadedRecordDot
   - OverloadedStrings
   - StrictData
@@ -44,6 +47,7 @@ dependencies:
   - aeson
   - text
   - optparse-applicative
+  - optics
 
 executable:
   main: Main.hs

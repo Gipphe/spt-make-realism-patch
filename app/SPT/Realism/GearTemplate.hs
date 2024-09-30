@@ -7,6 +7,7 @@ module SPT.Realism.GearTemplate
 where
 
 import Data.Aeson.TH (deriveToJSON)
+import Optics.TH (makeFieldLabels)
 import Relude
 import SPT.Realism.TH (derivingOpts)
 
@@ -39,3 +40,6 @@ data GearTemplate = MkGearTemplate
 
 
 $(deriveToJSON derivingOpts ''GearTemplate)
+
+
+$(makeFieldLabels ''Gear)

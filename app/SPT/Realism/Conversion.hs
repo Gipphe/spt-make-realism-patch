@@ -37,8 +37,26 @@ matchesGear = undefined
 
 
 matchesAmmo :: Base.Template -> Bool
-matchesAmmo = undefined
+matchesAmmo tmpl = tmpl ^? #template_props
+  where prefixes = ["ammo", "patron"]
 
 
 matchesGun :: Base.Template -> Bool
-matchesGun tmpl = maybe False (isJust . getField @"weapClass") tmpl._props
+matchesGun tmpl =
+    maybe False (isJust . (.propsweapClass)) tmpl.template_props
+        || maybe
+            False
+            (isJust . (.propsweapUseType))
+            tmpl.template_props
+        || maybe
+            False
+            ( maybe False (\name -> any (`T.isPrefixOf` name) prefixes)
+                . (.propsName)
+            )
+            tmpl.template_props
+        || maybe
+            False
+            (\name -> any (`T.isPrefixOf` name) prefixes)
+            tmpl.template_name
+  where
+    prefixes = ["weap", "gun"]
