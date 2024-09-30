@@ -27,6 +27,7 @@ ghc-options:
 
 default-extensions:
   - DerivingVia
+  - DataKinds
   - DuplicateRecordFields
   - ImportQualifiedPost
   - LambdaCase

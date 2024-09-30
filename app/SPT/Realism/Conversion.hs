@@ -4,6 +4,7 @@ module SPT.Realism.Conversion
 where
 
 import Data.Text qualified as T
+import GHC.Records (getField)
 import Relude
 import SPT.Props qualified as Base
 import SPT.Realism.AmmoTemplate (AmmoTemplate (..))
@@ -40,4 +41,4 @@ matchesAmmo = undefined
 
 
 matchesGun :: Base.Template -> Bool
-matchesGun = undefined
+matchesGun tmpl = maybe False (isJust . getField @"weapClass") tmpl._props
